@@ -16,3 +16,16 @@ CREATE TABLE post (
     body TEXT,
     FOREIGN KEY (author_id) REFERENCES user (id)
 );
+
+CREATE TABLE questions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    author_id INTEGER NOT NULL,
+    body TEXT
+);
+
+CREATE TABLE answers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    question_id INTEGER NOT NULL,
+    body TEXT,
+    FOREIGN KEY (question_id) REFERENCES questions (id)
+);
