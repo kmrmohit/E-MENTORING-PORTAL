@@ -46,7 +46,7 @@ def register():
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
-        try:
+
             username = request.form['username']
             password = request.form['password']
             db = get_db()
@@ -64,12 +64,11 @@ def login():
             if error is None:
                 session.clear()
                 session['user_id'] = user['id']
-                return redirect(url_for('index'))
+                return redirect(url_for('forum.dashboard'))
 
             flash(error)
 
-        except:
-            flash("something went wrong")
+
 
     return render_template('auth/login.html')
 
